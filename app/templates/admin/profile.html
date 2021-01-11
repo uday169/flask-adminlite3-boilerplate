@@ -1,0 +1,87 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} {{ title }} {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="content-header d-none d-md-block">
+			
+		</div>
+
+    <!-- Main content -->
+    <section class="content">	
+		<div class="row">
+      <div class="col-md-4">
+		<div class="card shadow-sm rounded">
+			<!-- <div class="row"> -->
+				<div class="card-body">
+               <h3 class="profile-username text-center">
+                  {% if current_user.is_authenticated %}
+                  {{ current_user.name }}!
+                  {% endif %} 
+               </h3>
+               <strong><i class="fa fa-book margin-r-5"></i> User Name</strong>
+               <p class="text-muted">
+                  {% if current_user.is_authenticated %}
+                 {{current_user.user_name}}
+                 {% endif %} 
+               </p>
+               <hr>
+               <strong><i class="fa fa-book margin-r-5"></i> Email</strong>
+               <p class="text-muted">
+                  {% if current_user.is_authenticated %}
+                 {{current_user.email}}
+                 {% endif %} 
+               </p>
+               <hr>
+               <strong><i class="fa fa-phone margin-r-5"></i> Phone No.</strong>
+              <p class="text-muted">
+               {% if current_user.is_authenticated %}
+                      {{current_user.phone}}   
+                {% endif %}
+              </p>
+              <hr>
+              <strong><i class="fa fa-map-marker margin-r-5"></i> Address</strong>
+
+              <p class="text-muted">
+               {% if current_user.is_authenticated %}
+               {{current_user.address}}   
+               {% endif %}
+              </p>
+              <hr>
+
+             </div> 
+            </div>              
+            </div>
+         <!-- </div> -->
+         <div class="col-md-8">
+            <div class="card shadow-sm rounded">
+                <nav>
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#changepassword" role="tab" aria-controls="nav-contact" aria-selected="false">Change Password</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#profileupdate" role="tab" aria-controls="nav-profile" aria-selected="false">Update Profile</a>
+                  </div>
+
+                  <div class="tab-content">
+                    <div class="tab-pane" id="changepassword">
+                     {% include 'admin/partials/changepassword.html' %}
+                    </div> 
+                    <div class="tab-pane" id="profileupdate">
+                     {% include 'admin/partials/update_profile.html' %}
+                    </div>
+                  </div>
+                </nav>
+            </div>
+          </div>
+   </div>
+   	
+</section>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+{% endblock javascripts %}

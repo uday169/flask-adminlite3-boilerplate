@@ -1,0 +1,42 @@
+<form class="form-horizontal" action="{{ url_for('admin.profile_update',user_id = current_user.id) }}" method="POST" enctype="multipart/form-data">
+    <div class="form-group" >
+      <label for="name" class="col-sm-3 control-label">Name</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="name" name="name" value="{{ current_user.name }}" required>
+      </div>
+    </div>
+ 
+    <div class="form-group" >
+       <label for="user_name" class="col-sm-3 control-label">User Name</label>
+       <div class="col-sm-9">
+         <input type="text" class="form-control" id="user_name" name="user_name" value="{{ current_user.user_name }}" required>
+       </div>
+     </div>
+ 
+    <div class="form-group" >
+      <label for="phone" class="col-sm-3 control-label">Phone No.</label>
+      <div class="col-sm-9">
+       {% if current_user.phone %}
+        <input type="text" class="form-control" id="phone" name="phone" value="{{ current_user.phone }}">
+        {% else %} 
+        <input type="text" class="form-control" id="phone" name="phone" value="">
+        {% endif %}
+       </div>
+    </div>
+ 
+    <div class="form-group" >
+       <label for="address" class="col-sm-3 control-label">Address</label>
+       <div class="col-sm-9">
+          {% if current_user.address %}
+         <input type="text" class="form-control" id="address" name="address" value="{{ current_user.address }}">
+         {% else %} 
+         <input type="text" class="form-control" id="address" name="address" value="">
+         {% endif %}
+       </div>
+     </div>
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <button type="submit" class="btn btn-danger">Submit</button>
+      </div>
+    </div>
+  </form>
